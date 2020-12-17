@@ -10,19 +10,24 @@ public class PortalPage extends Page{
     private JButton changeUsername, changePassword, logOut;
 
 
-    public PortalPage(){
+    public PortalPage(String privilege){
         super();
+        fillPage(30, 30, Color.CYAN);
 
 
-        info = new JLabel("Abolfazl Moradi");
+        JLabel empty1 = new JLabel(privilege);
+        empty1.setBackground(Color.ORANGE);
+        empty1.setHorizontalAlignment(SwingConstants.CENTER);
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
+        empty1.setBorder(border);
+        empty1.setOpaque(true);
+
+        info = new JLabel("Admin");
         info.setBackground(Color.ORANGE);
-        Border border = BorderFactory.createLineBorder(Color.BLACK, 5);
         info.setBorder(border);
         info.setOpaque(true);
-        info.setFont(new Font("serif", Font.BOLD, 20));
-        info.setIcon(new ImageIcon("./pics/4.jpg"));
-        info.setVerticalTextPosition(SwingConstants.BOTTOM);
-
+        info.setHorizontalAlignment(SwingConstants.CENTER);
+        info.setVerticalAlignment(SwingConstants.CENTER);
 
         changePassword = new JButton("Change Password");
         changeUsername = new JButton("Change Username");
@@ -30,31 +35,22 @@ public class PortalPage extends Page{
         logOut = new JButton("Log Out");
         logOut.setBackground(Color.RED);
         logOut.setOpaque(true);
-
-        JPanel[][] panels = new JPanel[30][30];
-        for(int i = 0 ; i < 30 ; i++) {
-            for (int j = 0; j < 30; j++) {
-                panels[i][j] = new JPanel();
-                addComponent(panels[i][j], j, i, 1, 1);
-            }
-        }
+        logOut.setBorder(border);
 
 
         addComponent(logOut, 0, 0, 1 ,1);
-        addComponent(info, 20, 0, 10 ,10);
-        addComponent(changeUsername, 20, 10, 10, 5);
-        addComponent(logOut, 20, 15, 10 ,5);
+        addComponent(info, 1, 0, 3 ,1);
+        addComponent(empty1, 25, 0, 5 ,1);
+        addComponent(changeUsername, 25, 1, 5, 1);
+        addComponent(changePassword, 25, 2, 5, 1);
 
 
 
     }
 
 
-    public void fillTable(int x, int y){
-        JPanel[][] panels = new JPanel[x][y];
-        for(int i = 0 ; i < x ; i++)
-            for(int j = 0 ; j < y ; j++)
-                addComponent(panels[i][j], j, i, 1, 1);
-
+    public void setName(String name){
+        info.setText(name);
     }
+
 }

@@ -3,7 +3,6 @@ package com.Feij;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class FrontPage extends Page {
 
@@ -28,9 +27,15 @@ public class FrontPage extends Page {
         studentIcon = new JLabel(new ImageIcon("./pics/2.jpg"));
         professorIcon = new JLabel(new ImageIcon("./pics/3.jpg"));
 
+
         adminLogin = new JButton("Login As Admin");
         studentLogin = new JButton("Login As Student");
         professorLogin = new JButton("Login As Professor");
+
+        Font buttonFont = new Font("aria", Font.BOLD, 15);
+        adminLogin.setFont(buttonFont);
+        studentLogin.setFont(buttonFont);
+        professorLogin.setFont(buttonFont);
 
         addComponent(portalLabel, 4 ,9 ,30 ,5);
         addComponent(adminIcon, 4 ,14 ,10 ,10);
