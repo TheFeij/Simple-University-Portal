@@ -23,11 +23,10 @@ public class AdminPage extends PortalPage {
         empty2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         empty2.setOpaque(true);
 
-        addComponent(addUserButton, 25, 3, 5, 1);
-        addComponent(foodScheduleButton, 25, 4, 5, 1);
-        addComponent(usersListButton, 25, 5, 5, 1);
-        addComponent(classesButton, 25, 6, 5, 1);
-        addComponent(empty2, 25, 7, 5, 23);
+        addComponent(addUserButton, 25, 2, 5, 1);
+        addComponent(foodScheduleButton, 25, 3, 5, 1);
+        addComponent(usersListButton, 25, 4, 5, 1);
+        addComponent(empty2, 25, 5, 5, 25);
     }
 
 }

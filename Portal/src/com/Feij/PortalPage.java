@@ -7,7 +7,7 @@ import java.awt.*;
 public class PortalPage extends Page{
 
     private JLabel info;
-    private JButton changeUsername, changePassword, logOut;
+    private JButton changeUsername, logOut;
 
 
     public PortalPage(String privilege){
@@ -29,8 +29,7 @@ public class PortalPage extends Page{
         info.setHorizontalAlignment(SwingConstants.CENTER);
         info.setVerticalAlignment(SwingConstants.CENTER);
 
-        changePassword = new JButton("Change Password");
-        changeUsername = new JButton("Change Username");
+        changeUsername = new JButton("Change User/Pass");
 
         logOut = new JButton("Log Out");
         logOut.setBackground(Color.RED);
@@ -42,9 +41,6 @@ public class PortalPage extends Page{
         addComponent(info, 1, 0, 3 ,1);
         addComponent(empty1, 25, 0, 5 ,1);
         addComponent(changeUsername, 25, 1, 5, 1);
-        addComponent(changePassword, 25, 2, 5, 1);
-
-
 
     }
 

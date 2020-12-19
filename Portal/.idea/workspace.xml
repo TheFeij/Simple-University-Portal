@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d454f87-1c51-450a-b2ae-8633d3b7f93c" name="Default Changelist" comment="" />
+    <list default="true" id="9d454f87-1c51-450a-b2ae-8633d3b7f93c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Portal/com/Feij/AdminPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Portal/com/Feij/AdminPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Portal/com/Feij/FoodSchedule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Portal/com/Feij/FoodSchedule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Portal/com/Feij/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Portal/com/Feij/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Feij/AdminPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Feij/AdminPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Feij/FoodSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Feij/FoodSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Feij/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Feij/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Feij/PortalPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Feij/PortalPage.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +24,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1ljIPjcwkJWHbk2gLoo8DXVb8TA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -70,6 +85,9 @@
       <workItem from="1608186715551" duration="6123000" />
       <workItem from="1608200554699" duration="3437000" />
       <workItem from="1608219196922" duration="9697000" />
+      <workItem from="1608275024411" duration="4310000" />
+      <workItem from="1608303710595" duration="4308000" />
+      <workItem from="1608361542751" duration="3435000" />
     </task>
     <servers />
   </component>
@@ -77,30 +95,34 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="113" key="GridCell.Tab.0.bottom" timestamp="1608234642039">
+    <state width="1323" height="53" key="GridCell.Tab.0.bottom" timestamp="1608364984205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="113" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1608234642039" />
-    <state width="1323" height="113" key="GridCell.Tab.0.center" timestamp="1608234642038">
+    <state width="1323" height="53" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1608364984205" />
+    <state width="1323" height="53" key="GridCell.Tab.0.center" timestamp="1608364984204">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="113" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1608234642038" />
-    <state width="1323" height="113" key="GridCell.Tab.0.left" timestamp="1608234642038">
+    <state width="1323" height="53" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1608364984204" />
+    <state width="1323" height="53" key="GridCell.Tab.0.left" timestamp="1608364984204">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="113" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1608234642038" />
-    <state width="1323" height="113" key="GridCell.Tab.0.right" timestamp="1608234642038">
+    <state width="1323" height="53" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1608364984204" />
+    <state width="1323" height="53" key="GridCell.Tab.0.right" timestamp="1608364984204">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="113" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1608234642038" />
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1608186716671">
+    <state width="1323" height="53" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1608364984204" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1608361542610">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1608186716671" />
-    <state x="77" y="0" key="new project wizard" timestamp="1608193118745">
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1608361542610" />
+    <state x="77" y="0" key="new project wizard" timestamp="1608282078839">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="77" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1608193118745" />
+    <state x="77" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1608282078839" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1608277473654">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1608277473654" />
     <state x="417" y="317" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1608131671269">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
