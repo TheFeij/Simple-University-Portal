@@ -45,8 +45,8 @@ public class Main {
         //RemoveClass removeClass = new RemoveClass();
         //removeClass.setVisible(true);
 
-        //AddClass addClass = new AddClass();
-        //addClass.setVisible(true);
+        AddClass addClass = new AddClass();
+        addClass.setVisible(true);
 
         //AdminChangeUserPass adminChangeUserPass = new AdminChangeUserPass();
         //adminChangeUserPass.setVisible(true);

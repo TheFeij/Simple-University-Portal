@@ -6,11 +6,11 @@ import java.awt.*;
 
 public class FoodSchedule extends AdminPage {
 
-    private FoodTable foodTable;
+    private FoodTableGui foodTable;
 
     public FoodSchedule(){
         super();
-        foodTable = new FoodTable();
+        foodTable = new FoodTableGui();
 
         addComponent(foodTable, 2, 4, 20, 20);
 

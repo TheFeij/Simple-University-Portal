@@ -6,13 +6,13 @@ import java.awt.*;
 
 public class ReserveFood extends StudentPage {
 
-    private FoodTable foodTable;
+    private FoodTableGui foodTable;
     private JLabel balance;
 
     public ReserveFood(){
         super();
 
-        foodTable = new FoodTable();
+        foodTable = new FoodTableGui();
 
         JLabel balance = new JLabel(String.format("Current Balance: %sR", "1500000"));
         balance.setBackground(Color.LIGHT_GRAY);
