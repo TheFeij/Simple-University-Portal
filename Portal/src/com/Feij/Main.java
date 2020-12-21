@@ -1,6 +1,14 @@
 package com.Feij;
 
 
+import Data.Admin;
+import Data.Professor;
+import Data.Student;
+import Gui.FrontPage;
+import Gui.LoginPage;
+import Gui.ProfessorPage;
+
+import java.awt.*;
 
 public class Main {
 
@@ -10,7 +18,7 @@ public class Main {
         //frontPage.setVisible(true);
 
         //LoginPage loginPage = new LoginPage();
-        //loginPage.setLocationRelativeTo(frontPage);
+        //loginPage.setLocationRelativeTo(null);
         //loginPage.setVisible(true);
 
         //PortalPage portalPage = new PortalPage("Admin");
@@ -45,8 +53,8 @@ public class Main {
         //RemoveClass removeClass = new RemoveClass();
         //removeClass.setVisible(true);
 
-        AddClass addClass = new AddClass();
-        addClass.setVisible(true);
+        //AddClass addClass = new AddClass();
+        //addClass.setVisible(true);
 
         //AdminChangeUserPass adminChangeUserPass = new AdminChangeUserPass();
         //adminChangeUserPass.setVisible(true);
@@ -56,6 +64,16 @@ public class Main {
 
         //ProfessorChangeUserPass professorChangeUserPass = new ProfessorChangeUserPass();
         //professorChangeUserPass.setVisible(true);
+
+
+        FrontPage frontPage = new FrontPage();
+        Admin admin = new Admin();
+
+        Professor professor = new Professor("ali", "asad");
+        admin.addProfessor(professor);
+
+        Controller controller = new Controller(frontPage, admin);
+        frontPage.setController(controller);
 
     }
 }
