@@ -113,11 +113,15 @@ public class AddingUsersPage extends AdminPage {
                 String username = studentUsername.getText();
                 String password = String.valueOf(studentPassword.getPassword());
                 getController().addStudent(username, password);
+                studentUsername.setText(null);
+                studentPassword.setText(null);
             }
             else if(e.getSource() == professorAddButton || e.getSource() == professorUsername || e.getSource() == professorPassword){
-                String username = studentUsername.getText();
-                String password = String.valueOf(studentPassword.getPassword());
+                String username = professorUsername.getText();
+                String password = String.valueOf(professorPassword.getPassword());
                 getController().addProfessor(username, password);
+                professorPassword.setText(null);
+                professorUsername.setText(null);
             }
         }
     }

@@ -9,14 +9,13 @@ import java.awt.event.ActionListener;
 
 public class ProfessorPage extends PortalPage {
 
-    private JButton addClassButton, gradingButton, closingClassButton;
+    private JButton addClassButton, closingClassButton;
 
     public ProfessorPage(String username){
         super("Professor", username);
 
         addClassButton = new JButton("Add Class");
-        gradingButton = new JButton("Give Grade");
-        closingClassButton = new JButton("Close Class");
+        closingClassButton = new JButton("Close/Enter Class");
 
         JLabel empty2 = new JLabel();
         empty2.setBackground(Color.BLUE);
@@ -25,15 +24,13 @@ public class ProfessorPage extends PortalPage {
 
         Handler handler = new Handler();
         addClassButton.addActionListener(handler);
-        gradingButton.addActionListener(handler);
         closingClassButton.addActionListener(handler);
         getLogOut().addActionListener(handler);
         getChangeUsername().addActionListener(handler);
 
         addComponent(addClassButton, 25, 2, 5, 1);
-        addComponent(gradingButton, 25, 3, 5, 1);
-        addComponent(closingClassButton, 25, 4, 5, 1);
-        addComponent(empty2, 25, 5, 5, 25);
+        addComponent(closingClassButton, 25, 3, 5, 1);
+        addComponent(empty2, 25, 4, 5, 26);
     }
 
 
@@ -57,11 +54,8 @@ public class ProfessorPage extends PortalPage {
             else if(e.getSource() == addClassButton){
                 page = new AddClass(getUsername());
             }
-            else if(e.getSource() == gradingButton){
-                /////////////////////////////////
-            }
             else if(e.getSource() == closingClassButton){
-                page = new RemoveClass(getUsername());
+                page = new RemoveClass(getUsername(), getController());
             }
             else if(e.getSource() == logout){
                 page = new FrontPage();

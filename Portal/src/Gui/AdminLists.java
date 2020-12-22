@@ -38,6 +38,7 @@ public class AdminLists extends AdminPage {
         classesModel.addColumn("Professor");
         classesModel.addColumn("Capacity");
         classesModel.addColumn("Students");
+        classesModel.addColumn("Day");
         classesModel.addColumn("Time");
 
         JScrollPane studentsScroll, professorsScroll, classesScroll;

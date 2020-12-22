@@ -109,8 +109,17 @@ public class LoginPage extends Page {
 
                 }
                 else if(type.equals("Student")){
-
-
+                    if(getController().studentLoginCheck(username, password)){
+                        setVisible(false);
+                        StudentPage studentPage = new StudentPage(username);
+                        studentPage.setController(getController());
+                        studentPage.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Login Failed", "Login Message", JOptionPane.WARNING_MESSAGE);
+                        usernameField.setText(null);
+                        passwordField.setText(null);
+                    }
                 }
 
             }

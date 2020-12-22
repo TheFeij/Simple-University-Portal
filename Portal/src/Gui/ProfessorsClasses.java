@@ -23,4 +23,34 @@ public class ProfessorsClasses extends JPanel {
 
         add(scrollPane);
     }
+
+    /**
+     * A method to add a new row to classes table
+     * @param info information to be added
+     */
+    public void addClassInfo(String[] info){
+        classesModel.insertRow(classesModel.getRowCount(), info);
+    }
+
+    /**
+     * A method to set information of the classes
+     * @param classesInfo information of classes
+     */
+    public void setInformation(String[][] classesInfo){
+
+        for(String[] info : classesInfo){
+            addClassInfo(info);
+        }
+    }
+
+    /**
+     * A method to reset information of table
+     */
+    public void resetInformation(){
+        System.out.println(classesModel.getRowCount());
+        for(int i = 0 ; i < classesModel.getRowCount() ; i++){
+            classesModel.removeRow(i);
+        }
+        classesModel.setRowCount(0);
+    }
 }

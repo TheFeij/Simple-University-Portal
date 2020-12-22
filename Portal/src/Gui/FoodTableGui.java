@@ -8,7 +8,7 @@ public class FoodTableGui extends Panel {
 
     private final GridBagLayout layout;
     private final GridBagConstraints constraints;
-    private JButton[][][] schedule;
+    private JLabel[][][] schedule;
 
     public FoodTableGui(){
 
@@ -22,24 +22,9 @@ public class FoodTableGui extends Panel {
 
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 
-        schedule = new JButton[6][2][2];
-        for(int i = 0 ; i < 6 ; i++){
-            schedule[i][0][0] = new JButton(" First Choice");
-            schedule[i][0][0].setBorder(border);
-            //schedule[i][0][0].setHorizontalAlignment(SwingConstants.CENTER);
+        schedule = new JLabel[6][2][2];
+        initializeTable();
 
-            schedule[i][0][1] = new JButton(" Second Choice");
-            schedule[i][0][1].setBorder(border);
-            //schedule[i][0][1].setHorizontalAlignment(SwingConstants.CENTER);
-
-            schedule[i][1][0] = new JButton(" First Choice");
-            schedule[i][1][0].setBorder(border);
-            //schedule[i][1][0].setHorizontalAlignment(SwingConstants.CENTER);
-
-            schedule[i][1][1] = new JButton(" Second Choice");
-            schedule[i][1][1].setBorder(border);
-            //schedule[i][1][1].setHorizontalAlignment(SwingConstants.CENTER);
-        }
 
         JLabel lunch, dinner, day;
         lunch = new JLabel("Lunch");
@@ -125,6 +110,42 @@ public class FoodTableGui extends Panel {
         constraints.gridheight = height;
         layout.setConstraints(component, constraints);
         add(component);
+    }
+
+    public void initializeTable(){
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
+        for(int i = 0 ; i < 6 ; i++){
+            schedule[i][0][0] = new JLabel(" First Choice");
+            schedule[i][0][0].setBorder(border);
+            //schedule[i][0][0].setHorizontalAlignment(SwingConstants.CENTER);
+
+            schedule[i][0][1] = new JLabel(" Second Choice");
+            schedule[i][0][1].setBorder(border);
+            //schedule[i][0][1].setHorizontalAlignment(SwingConstants.CENTER);
+
+            schedule[i][1][0] = new JLabel(" First Choice");
+            schedule[i][1][0].setBorder(border);
+            //schedule[i][1][0].setHorizontalAlignment(SwingConstants.CENTER);
+
+            schedule[i][1][1] = new JLabel(" Second Choice");
+            schedule[i][1][1].setBorder(border);
+            //schedule[i][1][1].setHorizontalAlignment(SwingConstants.CENTER);
+        }
+    }
+
+    /**
+     * A method to update table
+     * @param info information to be added to table
+     */
+    public void updateTable(String[][][] info){
+        for(int i = 0 ; i < 6 ; i++){
+            for(int j = 0 ; j < 2 ; j++){
+                for(int k = 0 ; k < 2  ;k++){
+                    if(!info[i][j][k].equals(""))
+                        schedule[i][j][k].setText(info[i][j][k]);
+                }
+            }
+        }
     }
 
 }

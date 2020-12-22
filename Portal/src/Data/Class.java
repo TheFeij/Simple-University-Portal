@@ -20,7 +20,7 @@ public class Class implements Serializable {
     //name of the professor
     private String professor;
     //the time class is being held
-    private int time;
+    private String time;
     //the day class is being held
     private String day;
     //number of credits this class has
@@ -40,7 +40,7 @@ public class Class implements Serializable {
      * @param capacity capacity of the class
      * @param credits number of the credits this class has
      */
-    public Class(String name, String professor, int time,String day, int capacity, int credits){
+    public Class(String name, String professor, String time,String day, int capacity, int credits){
 
         students = new ArrayList<Student>();
         this.name = name;
@@ -61,6 +61,15 @@ public class Class implements Serializable {
     }
 
     /**
+     * A method to set professor name
+     * @param professor name of the professor
+     */
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
+
+
+    /**
      * A method to get day of the class
      * @return day of the class
      */
@@ -68,17 +77,6 @@ public class Class implements Serializable {
         return day;
     }
 
-    public String getTimeOfClass(){
-        String temp = null;
-        if(this.time == 1)
-            temp = "8-10";
-        else if(this.time == 2)
-            temp = "10-12";
-        else if(this.time == 3)
-            temp = "14-16";
-
-        return day + " : " + temp;
-    }
 
     /**
      * A method to get name of the professor
@@ -100,7 +98,7 @@ public class Class implements Serializable {
      * A method to get time of the class
      * @return time of the class
      */
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
@@ -141,4 +139,43 @@ public class Class implements Serializable {
         }
         return null;
     }
+
+    /**
+     * A method to close the class
+     */
+    public void closeClass(){
+        for(Student student : students){
+            student.removeClass(this);
+        }
+    }
+
+    /**
+     * A method to check if class has space to add a student or not
+     * @return true if class has space to add a student
+     */
+    public boolean hasSpace(){
+        return students.size() < capacity;
+    }
+
+    /**
+     * A method to add a student to class
+     * @param student student to be added
+     */
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
+    /**
+     * A method to check if student exist in class or not
+     * @param username username of the student
+     * @return true if student exists in class
+     */
+    public boolean studentExists(String username){
+        for(Student student : students){
+            if(student.getUsername().equals(username))
+                return true;
+        }
+        return false;
+    }
+
 }

@@ -20,6 +20,7 @@ public class Page extends JFrame {
         this.setSize(new Dimension(1300, 700));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         layout = new GridBagLayout();
         constraints = new GridBagConstraints();

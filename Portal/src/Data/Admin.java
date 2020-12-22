@@ -1,5 +1,6 @@
 package Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * @since 2020.12.20
  * @version 0.0
  */
-public class Admin {
+public class Admin implements Serializable {
 
     //username of the admin
     private String username;
@@ -31,7 +32,7 @@ public class Admin {
     public Admin(){
 
         this.username ="Admin";
-        this.password = "Admin";
+        this.password = "12345678";
         foodTable = new FoodTable();
         allClasses = new ArrayList<Class>();
         allStudents = new ArrayList<Student>();
@@ -60,11 +61,12 @@ public class Admin {
      * A method to set food
      * @param day day of the food
      * @param meal lunch or dinner
-     * @param type first food or second food
      * @param food name of the food
+     * @return true if food is set and false
+     * if food has already been set for this day
      */
-    public void setFood(String day, String meal, String type, String food){
-        foodTable.setFood(day, meal, type, food);
+    public boolean setFood(String day, String meal, String food){
+        return foodTable.setFood(day, meal, food);
     }
 
     /**
@@ -167,5 +169,34 @@ public class Admin {
      */
     public ArrayList<Professor> getAllProfessors() {
         return allProfessors;
+    }
+
+    /**
+     * A method to add a class to portal
+     * @param newClass class to be added
+     */
+    public void addClass(Class newClass){
+        allClasses.add(newClass);
+    }
+
+    /**
+     * A method to get a class
+     * @param className class we want to get
+     * @return class and null if class does not exist
+     */
+    public Class getClass(String className){
+        for(Class clss : allClasses){
+            if(clss.getName().equals(className))
+                return clss;
+        }
+        return null;
+    }
+
+    /**
+     * A method to remove a class from portal
+     * @param tempClass class to be removed
+     */
+    public void removeClass(Class tempClass){
+        allClasses.remove(tempClass);
     }
 }

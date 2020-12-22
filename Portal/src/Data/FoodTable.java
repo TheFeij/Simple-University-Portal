@@ -1,12 +1,14 @@
 package Data;
 
+import java.io.Serializable;
+
 /**
  * This class represents Food schedule of the university.
  * except for fridays every day university gives food.
  * each day has lunch and dinner and each of them has to
  * types of food.
  */
-public class FoodTable {
+public class FoodTable implements Serializable {
 
     //food table, first dimension represents days, second one represents
     //either it is lunch or dinner and the third dimension indicates name of
@@ -31,31 +33,59 @@ public class FoodTable {
      * A method to set a cell in the food table
      * @param day day of the food
      * @param meal lunch or dinner
-     * @param type first food or second food
      * @param food name of the food
+     * @return true if food is se and
+     * false if food is set already
      */
-    public void setFood(String day, String meal, String type, String food){
+    public boolean setFood(String day, String meal, String food){
 
-        int[] code = encode(day, meal, type);
+        int[] code = encode(day, meal);
 
         int i = code[0];
         int j = code[1];
-        int k = code[2];
 
-        table[i][j][k] = food;
+        if(table[i][j][0].equals("")){
+            table[i][j][0] = food;
+            return true;
+        }
+        else if(table[i][j][1].equals("")){
+            table[i][j][1] = food;
+            return true;
+        }
+        else
+            return false;
+
+    }
+
+    /**
+     * A method to set a cell in the food table
+     * @param day day of the food
+     * @param meal lunch or dinner
+     * @param food name of the food
+     * @param type first food or second food
+     * @return true if food is se and
+     * false if food is set already
+     */
+    public boolean setStudentFood(int day, int meal, String food, int type){
+
+        if(table[day][meal][0].equals("") && table[day][meal][1].equals("")){
+            table[day][meal][type] = food;
+            return true;
+        }
+        else
+            return false;
+
     }
 
     /**
      * A method to encode a meal into numbers
      * @param day day of the food
      * @param meal lunch or dinner
-     * @param type first food or second food
      * @return encoded meal
      */
-    public int[] encode(String day, String meal, String type){
+    public int[] encode(String day, String meal){
         int i = 0;
         int j = 0;
-        int k = 0;
 
         if (day.equals("Saturday"))
             i = 0;
@@ -75,15 +105,9 @@ public class FoodTable {
         else if(meal.equals("Dinner"))
             j = 1;
 
-        if(type.equals("First Food"))
-            k = 0;
-        else if(type.equals("Second Food"))
-            k = 1;
-
-        int[] code = new int[3];
+        int[] code = new int[2];
         code[0] = i;
         code[1]  = j;
-        code[2]  = k;
 
         return code;
 
@@ -99,12 +123,12 @@ public class FoodTable {
      * and student cannot reserve on that day and meal but admin can
      * add a new food type. -1 if none of these conditions or satisfied
      */
-    public int checkDay(String day, String meal, String type){
-        int[] code = encode(day, meal, type);
+    public int checkDay(String day, String meal, int type){
+        int[] code = encode(day, meal);
 
         int i = code[0];
         int j = code[1];
-        int k = code[2];
+        int k = type;
 
         if(table[i][j][0].equals("") && table[i][j][1].equals(""))
             return 0;   //student can reserve food on this day

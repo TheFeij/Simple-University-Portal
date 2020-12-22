@@ -1,5 +1,6 @@
 package Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
  * @since 2020.12.19
  * @version 0.0
  */
-public class Student {
+public class Student implements Serializable {
 
     //username of the student
     private String username;
@@ -22,9 +23,9 @@ public class Student {
     //balance of the student
     private int balance;
     //average grade of the student
-    private int averageGrade;
+    private Integer averageGrade;
     //grades of the student for each class
-    private HashMap<String, Integer> grades;
+    private HashMap<Class, Integer> grades;
     //list of student's all classes
     private ArrayList<Class> classes;
     //food table of the student
@@ -39,12 +40,12 @@ public class Student {
     public Student(String username, String password){
         foodTable = new FoodTable();
         classes = new ArrayList<Class>();
-        grades = new HashMap<String, Integer>();
+        grades = new HashMap<Class, Integer>();
         this.username = username;
         this.password = password;
         credits = 0;
         balance = 0;
-        averageGrade = 0;
+        averageGrade = -1;
     }
 
     /**
@@ -84,7 +85,7 @@ public class Student {
      * @param newUsername username of the student
      */
     public void setUsername(String newUsername){
-        this.username = username;
+        this.username = newUsername;
     }
 
     /**
@@ -92,7 +93,7 @@ public class Student {
      * @param newPassword password of the student
      */
     public void setPassword(String newPassword){
-        this.password = password;
+        this.password = newPassword;
     }
 
     /**
@@ -104,44 +105,19 @@ public class Student {
     }
 
     /**
-     * A method to add a new class
-     * @param newClass the class to be added
-     * @return true if class added successfully
+     * A method to increase number of credits of the student
+     * @param credits credits to be added
      */
-    public boolean addClass(Class newClass){
-        if(addCredit(newClass.getCredits())){
-            classes.add(newClass);
-            return true;
-        }
-        else{
-            return false;
-        }
-
+    public void addCredit(int credits){
+        this.credits += credits;
     }
 
     /**
-     * A method to increase number of credits of the student
-     * @param credits credits to be added
-     * @return true if credits added successfully
+     * A method to decrease student's credits by specified amount
+     * @param credits
      */
-    public boolean addCredit(int credits){
-        calculateAverageGrade();
-        if(averageGrade >= 17){
-            if(this.credits + credits <= 24){
-                this.credits += credits;
-                return true;
-            }
-            else
-                return false;
-        }
-        else{
-            if(this.credits + credits <= 20){
-                this.credits += credits;
-                return true;
-            }
-            else
-                return false;
-        }
+    private void decreaseCredits(int credits){
+        this.credits -= credits;
     }
 
     /**
@@ -150,27 +126,31 @@ public class Student {
      */
     public void calculateAverageGrade(){
         int sum = 0;
+        int markedCredits = 0;
         for(Map.Entry mapElement : grades.entrySet()){
-            sum += (Integer) mapElement.getValue();
+            Integer grade = (Integer) mapElement.getValue();
+            if(grade != -1){
+                Class clss = (Class)mapElement.getKey();
+                markedCredits += clss.getCredits();
+                sum += (clss.getCredits()) * grade;
+            }
         }
-        averageGrade =  sum / grades.size();
+        if(markedCredits == 0){
+            averageGrade = -1;
+        }
+        else
+            averageGrade = (sum / markedCredits);
     }
 
     /**
      * A method to set grade of a class
      * @param grade grade to be set
      * @param className name of the class
-     * @return true if grade set successfully and false if
-     * class does not exist in student class list
      */
-    public boolean setGrade(int grade, String className){
-        if(grades.containsKey(className)){
-            grades.put(className, grade);
-            return true;
-        }
-        else
-            return false;
+    public void setGrade(int grade, String className){
+        grades.put(getClass(className), grade);
     }
+
 
     /**
      * A method to reserve food
@@ -178,9 +158,11 @@ public class Student {
      * @param meal lunch or dinner
      * @param type first food or second food
      * @param food name of the food
+     * @return true if food is set and false
+     * if the food cannot be set
      */
-    public void setFood(String day, String meal, String type, String food){
-        foodTable.setFood(day, meal, type, food);
+    public boolean setFood(int day, int meal, int type, String food){
+        return foodTable.setStudentFood(day, meal,food,type);
     }
 
     /**
@@ -206,14 +188,78 @@ public class Student {
      * @param classTime time of the new class
      * @return true if the new class can be added to students schedule
      */
-    public boolean checkClassTime(String classDay, int classTime){
+    public boolean checkClassTime(String classDay, String classTime){
         for(Class clss : classes){
             if(clss.getDay().equals(classDay)){
-                if(clss.getTime() == classTime){
+                if(clss.getTime().equals(classTime)){
                     return false;
                 }
             }
         }
         return true;
+    }
+
+    /**
+     * A method to get a class
+     * @param className name of the class
+     * @return if it exists returns the class if not
+     * returns null
+     */
+    public Class getClass(String className){
+        for(Class clss  : classes){
+            if(clss.getName().equals(className))
+                return clss;
+        }
+        return null;
+    }
+
+    /**
+     * A method to remove a class from students schedule
+     * @param tempClass class to be removed
+     */
+    public void removeClass(Class tempClass){
+        classes.remove(tempClass);
+        decreaseCredits(tempClass.getCredits());
+    }
+
+    /**
+     * A method to check if student can have class or not
+     * @param classCredits credits of the class we want to add
+     * @return true if student can have the class
+     */
+    public boolean canAddClass(int classCredits){
+        calculateAverageGrade();
+        if(averageGrade < 17){
+            return this.credits + classCredits <= 20;
+        }
+        else{
+            return this.credits + classCredits <= 24;
+        }
+    }
+
+    /**
+     * A method to add a class
+     * @param newClass class to be added
+     */
+    public void addClass(Class newClass){
+        classes.add(newClass);
+        grades.put(newClass, -1);
+    }
+
+    /**
+     * A methof to check if student has the mentioned class or not
+     * @param className nam eof the class to be checked
+     * @return true if student has the mentioned class
+     */
+    public boolean hasClass(String className){
+        for(Class clss : classes){
+            if(clss.getName().equals(className))
+                return true;
+        }
+        return false;
+    }
+
+    public int getClassGrade(String className){
+        return grades.get(className);
     }
 }
